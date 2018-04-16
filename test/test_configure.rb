@@ -132,6 +132,9 @@ module Embulk
 
         config = least_config.merge('auth_method' => 'compute_engine')
         assert_nothing_raised { Bigquery.configure(config, schema, processor_count) }
+
+        config = least_config.merge('auth_method' => 'application_default')
+        assert_nothing_raised { Bigquery.configure(config, schema, processor_count) }
       end
 
       def test_json_keyfile
